@@ -33,7 +33,7 @@ def test_summary():
 
     assert anne.summary() == "Anne Byron is a senior enrolled in 2 classes"
 
-def test_get_student_with_more_classes():
+def test_get_student_with_more_classes_student_a():
     charles = Student("Charles Babbage", "senior", ["mechanical engineering"])
     ada = Student(
         "Ada Lovelace",
@@ -42,3 +42,30 @@ def test_get_student_with_more_classes():
     )
 
     # TODO: write assertions
+    result = get_student_with_more_classes(ada, charles)
+
+    assert result == ada
+
+def test_get_student_with_more_classes_student_b():
+    charles = Student("Charles Babbage", "senior", ["mathematics", "mechanical engineering"])
+    ada = Student(
+        "Ada Lovelace",
+        "sophomore",
+        ["foundations of computing"]
+    )
+
+    # TODO: write assertions
+    result = get_student_with_more_classes(ada, charles)
+
+    assert result == charles
+
+def test_init_no_classes():
+    name = "Ada Lovelace"
+    level = "sophomore"
+    courses = []
+
+    ada = Student(name, level, courses)
+
+    assert ada.name == name
+    assert ada.level == level
+    assert ada.courses == courses
